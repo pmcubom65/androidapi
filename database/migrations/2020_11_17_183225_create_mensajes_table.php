@@ -30,7 +30,7 @@ class CreateMensajesTable extends Migration
             ->onDelete('cascade');
 
             
-            $table->foreign('usuarioid')
+            $table->foreign('USUARIOID')
             ->references('id')
             ->on('usuarios')
             ->onDelete('cascade');
