@@ -29,7 +29,7 @@ class CreateGruposchatUsuarioTable extends Migration
 
             
             $table->foreign('USUARIOID')
-            ->references('ID')
+            ->references('id')
             ->on('usuarios')
             ->onDelete('cascade');
         });

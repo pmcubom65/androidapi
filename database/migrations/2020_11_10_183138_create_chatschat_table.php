@@ -16,7 +16,7 @@ class CreateChatschatTable extends Migration
         Schema::create('chatschat', function (Blueprint $table) {
             $table->bigIncrements('ID');
             $table->dateTime('INICIO');
-            $table->string('CODIGO')->unique();
+            $table->string('CODIGO');
             $table->timestamps();
         });
     }
