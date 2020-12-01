@@ -18,8 +18,8 @@ class ChatController extends Controller
       $inicio=Carbon::parse($data['inicio'])->format('Y-m-d H:i:s');
         
         $michat=new Chat();
-        $michat->codigo=$codigo;
-        $michat->inicio=$inicio;
+        $michat->CODIGO=$codigo;
+        $michat->INICIO=$inicio;
 
 
         $michat->save();
