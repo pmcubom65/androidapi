@@ -24,7 +24,7 @@ class ChatController extends Controller
 
         $michat->save();
 
-        $id=$michat->id;
+        $id=$michat->ID;
 
         $Response=['id'=>$id, 'codigo'=>$codigo, 'inicio'=>$inicio, 'idchat'=>$id];
 
