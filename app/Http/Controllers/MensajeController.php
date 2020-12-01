@@ -54,10 +54,12 @@ class MensajeController extends Controller
      // join usuarios u on u.id=m.usuarioid left join archivos a on a.mensajeid=m.id
       //  WHERE  m.CHATID='$chat_id'; ";
 
+      //$data = DB::select( DB::raw("SELECT * from records WHERE active ='1'") ); 
+
       $mensajes=DB::table('mensajes')->leftJoin('chatschat', 'mensajes.CHAT_ID', '=', 'chatschat.ID')->
       leftJoin('usuarios', 'mensajes.USUARIOID', '=', 'usuarios.ID')
       ->leftJoin('archivos', 'mensajes.ID', '=', 'archivos.MENSAJE_ID')->
-      select ( DB::raw('contenido') , DB::raw('mensajes.DIA as dia'), 
+      select ( DB::raw('SELECT mensajes.contenido') , DB::raw('mensajes.DIA as dia'), 
       DB::raw('usuarios.TELEFONO as telefono'), DB::raw('usuarios.NOMBRE as nombre'),
       DB::raw('archivos.RUTA as ruta')
      )
