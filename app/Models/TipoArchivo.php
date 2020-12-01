@@ -11,4 +11,5 @@ class TipoArchivo extends Model
     protected $table = 'tipos_archivos';
 
     protected $fillable = ['TIPO'];
+    protected $primaryKey = 'ID';
 }

@@ -9,4 +9,5 @@ class Grupo extends Model
 {
     use HasFactory;
     protected $table = 'gruposchat';
+    protected $primaryKey = 'ID';
 }

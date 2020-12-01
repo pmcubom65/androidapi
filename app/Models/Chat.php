@@ -10,4 +10,5 @@ class Chat extends Model
     use HasFactory;
 
     protected $table='chatschat';
+    protected $primaryKey = 'ID';
 }

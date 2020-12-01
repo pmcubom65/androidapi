@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Archivo extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'ID';
 }
