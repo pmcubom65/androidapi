@@ -25,7 +25,7 @@ class GrupoController extends Controller
         $grupo->save();
 
 
-        $Response=['ID'=>$grupo->id, 'NOMBRE'=>$grupo->NOMBRE];
+        $Response=['ID'=>$grupo->ID, 'NOMBRE'=>$grupo->NOMBRE];
 
         return response()->json($Response,200);
 }
@@ -74,6 +74,8 @@ public function buscargrupo(Request $request) {
     $grupo=Grupo::where('ID', '=', $elcodigo->CODIGO)->first();
 
 
+
+
     if ($grupo) {
 
       //  $querymiembros=" Select u.NOMBRE, u.TOKEN, u.TELEFONO, u.ID As 'USUARIOID' from usuarios u,
@@ -85,10 +87,10 @@ public function buscargrupo(Request $request) {
 
       $miembros=DB::table('gruposchat_usuario')->leftJoin('usuarios', 'gruposchat_usuario.USUARIOID', '=', 'usuarios.ID')->
       select ('usuarios.NOMBRE', 'usuarios.TOKEN', 'usuarios.TELEFONO', DB::raw('usuarios.ID as USUARIOID'))
-      ->where('gruposchat_usuario.GRUPOID', '=', $elcodigo->CODIGO)->get();
+      ->where('gruposchat_usuario.GRUPOID', '=', $grupo->ID)->get();
 
 
-      $Response=['ID'=>$id, 'NOMBRE'=>$grupo->NOMBRE, 'MIEMBROS'=>$miembros];
+      $Response=['ID'=>$grupo->ID, 'NOMBRE'=>$grupo->NOMBRE, 'MIEMBROS'=>$miembros];
 
       return response()->json($Response,200);
 
