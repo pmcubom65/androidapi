@@ -53,7 +53,7 @@ class ChatController extends Controller
               }
         
             $chats=   DB::table('chatschat')->leftJoin('mensajes', 'chatschat.ID', '=', 'mensajes.CHAT_ID')->
-            leftJoin('usuarios', 'mensajes.IDUSUARIORECEPCION', '=', 'usuarios.ID')->
+            Join('usuarios', 'mensajes.IDUSUARIORECEPCION', '=', 'usuarios.ID', 'full outer')->
             select ('chatschat.INICIO', DB::raw('chatschat.ID as CODIGO') , 'usuarios.TELEFONO', 'usuarios.NOMBRE', 'usuarios.TOKEN', 'usuarios.ID' )
       ->where('mensajes.USUARIOID', '=', $id)->whereNotIn('chatschat.CODIGO',$idsgrupos)->get();
 
