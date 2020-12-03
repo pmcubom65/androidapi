@@ -84,7 +84,12 @@ class ArchivoController extends Controller
             $mimensaje->CHAT_ID=$chat_id;
             $mimensaje->DIA=$dia;
             $mimensaje->USUARIOID=$id;
-            $mimensaje->IDUSUARIORECEPCION=$receptor;
+            
+            if ($receptor!=''){
+                $mimensaje->IDUSUARIORECEPCION=$receptor;
+            }
+
+  
 
             $mimensaje->save();
 
