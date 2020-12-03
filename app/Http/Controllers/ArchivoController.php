@@ -86,7 +86,7 @@ class ArchivoController extends Controller
             $mimensaje->USUARIOID=$id;
             
             if ($receptor!=''){
-                $mimensaje->IDUSUARIORECEPCION=$receptor;
+                $mimensaje->IDUSUARIORECEPCION=$emisor;
             }
 
   
