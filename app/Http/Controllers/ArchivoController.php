@@ -66,6 +66,8 @@ class ArchivoController extends Controller
 
         $tipo = TipoArchivo::where('TIPO', '=', $extension)->first();
 
+        $tipo->fresh();
+
         $miarchivo=New Archivo();
         $mimensaje=New Mensaje();
 
