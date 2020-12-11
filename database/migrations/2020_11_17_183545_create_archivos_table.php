@@ -36,7 +36,7 @@ class CreateArchivosTable extends Migration
 
             $table->foreign('TIPOID')
             ->references('ID')
-            ->on('archivos')
+            ->on('tipos_archivos')
             ->onDelete('cascade');
         });
     }
