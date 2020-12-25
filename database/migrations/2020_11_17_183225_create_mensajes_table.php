@@ -19,7 +19,7 @@ class CreateMensajesTable extends Migration
             $table->string('CONTENIDO')->nullable();
             $table->dateTime('DIA');
 
-            $table->unsignedBigInteger('CHAT_ID')->unsigned();
+            $table->unsignedBigInteger('CHAT_ID')->unsigned()->nullable();
             $table->unsignedBigInteger('IDUSUARIORECEPCION')->unsigned()->nullable();
             $table->unsignedBigInteger('USUARIOID')->unsigned();
    
