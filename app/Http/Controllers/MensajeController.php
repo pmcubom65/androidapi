@@ -41,6 +41,31 @@ class MensajeController extends Controller
     }
 
 
+    public function dameRecuerdos(Request $request) {
+
+        $data = $request->json()->all();
+
+        $id = $data["id"];
+
+
+        $mensajes=DB::table('mensajes')->leftJoin('archivos', 'mensajes.ID', '=', 'archivos.MENSAJE_ID')->
+        select ( DB::raw('mensajes.CONTENIDO as contenido') , DB::raw('mensajes.DIA as dia'), 
+        DB::raw('archivos.RUTA as ruta')
+       )->whereNull('mensajes.CHAT_ID')->where('mensajes.USUARIOID', '=', $id)
+        ->orderBy('mensajes.DIA', 'desc')->get();
+  
+        //   Mensaje m=new Mensaje(explrObject.getString("contenido"), explrObject.getString("dia"), explrObject.getString("telefono"), explrObject.getString("nombre"), null);
+  
+        $Response=['mensajes'=>$mensajes];
+  
+        return response()->json($Response,200);
+
+
+
+
+    }
+
+
 
   
     public function buscarmensajes(Request $request) {

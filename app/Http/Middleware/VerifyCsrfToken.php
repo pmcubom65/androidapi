@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         '/api/smartchat/crearchat',
         '/api/smartchat/almacenarimagen',
         '/api/smartchat/almacenarrecuerdo',
+        '/api/smartchat/damerecuerdos',
         '/api/smartchat/buscarfoto',
         '/api/smartchat/buscarusuario',
         '/api/smartchat/crearmensaje',
