@@ -34,7 +34,7 @@ class MensajeController extends Controller
 
         $mensaje->save();
 
-        $Response=['contenido'=>$contenido];
+        $Response=['contenido'=>$contenido, 'id'=>$mensaje->ID];
 
         return response()->json($Response,200);
 
