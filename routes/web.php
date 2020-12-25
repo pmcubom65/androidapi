@@ -30,6 +30,8 @@ Route::post('/api/smartchat/crearchat', 'ChatController@crearChat');
 
 Route::post('/api/smartchat/almacenarimagen', 'ArchivoController@almacenar');
 
+Route::post('/api/smartchat/almacenarrecuerdo', 'ArchivoController@almacenarrecuerdo');
+
 
 Route::post('/api/smartchat/buscarfoto', 'ArchivoController@buscarfoto');
 

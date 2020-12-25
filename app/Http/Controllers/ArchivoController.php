@@ -16,6 +16,14 @@ use DB;
 
 class ArchivoController extends Controller
 {
+
+
+
+
+
+
+
+
     public function almacenar(Request $request) {
 
 
@@ -114,6 +122,71 @@ class ArchivoController extends Controller
 
     }
 
+
+
+
+    public function almacenarrecuerdo(Request $request) {
+
+        $data = $request->json()->all();
+        $id = $data["ID"];
+        $base64_string=$data["IMAGEN"];
+    
+        $extension=$data["EXTENSION"];
+        $dia=Carbon::parse($data["DIA"])->format('Y-m-d H:i:s');
+        $mensaje_id=$data["MENSAJE_ID"];
+        $emisor=$data["EMISOR"];
+        $receptor=$data["RECEPTOR"];
+
+
+        $dir='usuarios'.DIRECTORY_SEPARATOR.$id;
+
+        if (! File::exists($dir)) {
+            File::makeDirectory($dir,0777,true);
+        }
+
+        
+
+        $diamodificado = str_replace(":", "", $dia);
+     
+        $path = $dir.DIRECTORY_SEPARATOR.$id.$mensaje_id.$diamodificado.'.'.$extension;
+
+        $datos = explode(',', $base64_string);
+          Storage::disk('s3')->put($path, base64_decode($datos[1]), 'public');
+       
+          $documentPath=  Storage::disk('s3')->url($path);
+      
+          Storage::disk('s3')->setVisibility($path,  'public');
+
+
+        TipoArchivo::updateOrCreate(
+            ['TIPO' => $extension]
+        );
+
+
+        $tipo = TipoArchivo::where('TIPO', '=', $extension)->first();
+
+
+
+        $miarchivo=New Archivo();
+
+
+        $miarchivo->USUARIOID=$id;
+   
+        $miarchivo->TIPOID= $tipo->ID;
+    
+        $miarchivo->RUTA= str_replace("%5C", '/',$documentPath);
+ 
+
+
+        $miarchivo->MENSAJE_ID=$mensaje_id;
+        $miarchivo->save();
+
+   
+        $Response=['GRABADO' => 'Si', 'RUTA' => str_replace("%5C", '/',$documentPath)];
+
+        return response()->json($Response,200);
+
+    }
 
 
 
