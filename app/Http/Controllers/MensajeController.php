@@ -50,7 +50,7 @@ class MensajeController extends Controller
 
         $mensajes=DB::table('mensajes')->leftJoin('archivos', 'mensajes.ID', '=', 'archivos.MENSAJE_ID')->
         select ( DB::raw('mensajes.CONTENIDO as contenido') , DB::raw('mensajes.DIA as dia'), 
-        DB::raw('archivos.RUTA as ruta')
+        DB::raw('archivos.RUTA as ruta'), DB::raw('mensajes.ID as id')
        )->whereNull('mensajes.CHAT_ID')->where('mensajes.USUARIOID', '=', $id)
         ->orderBy('mensajes.DIA', 'desc')->get();
   
@@ -61,10 +61,22 @@ class MensajeController extends Controller
         return response()->json($Response,200);
 
 
-
-
     }
 
+
+    public function borrarRecuerdo(Request $request) {
+
+        $data = $request->json()->all();
+
+        $id = $data["id"];
+
+        DB::table('mensajes')->where('ID', '=', $id)->delete();
+
+        $Response=['borrado'=>'si'];
+
+        return response()->json($Response,200);
+
+    }
 
 
   
