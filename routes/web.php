@@ -35,6 +35,9 @@ Route::post('/api/smartchat/almacenarrecuerdo', 'ArchivoController@almacenarrecu
 Route::post('/api/smartchat/damerecuerdos', 'MensajeController@dameRecuerdos');
 
 
+Route::post('/api/smartchat/borrarrecuerdo', 'MensajeController@borrarRecuerdo');
+
+
 Route::post('/api/smartchat/buscarfoto', 'ArchivoController@buscarfoto');
 
 

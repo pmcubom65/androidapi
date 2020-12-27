@@ -25,6 +25,7 @@ class VerifyCsrfToken extends Middleware
         '/api/smartchat/buscarGrupoPorID',
         '/api/smartchat/anadirusuarioagrupo',
         '/api/smartchat/misgrupos',
-        '/api/smartchat/detallesmischats'
+        '/api/smartchat/detallesmischats',
+        '/api/smartchat/borrarrecuerdo'
     ];
 }
